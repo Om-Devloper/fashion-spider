@@ -3704,12 +3704,10 @@ textarea.form-control-lg {
 }
 
 .dropdown-item {
-    display: block;
     width: 100%;
     padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
     clear: both;
     font-weight: 400;
-    color: var(--bs-dropdown-link-color);
     text-align: inherit;
     text-decoration: none;
     white-space: nowrap;
@@ -12267,7 +12265,7 @@ body {
 .text-white {
     text-shadow: 0 0 1px rgba(255,255,255,.3),0 0 2px rgba(255,255,255,.3),0 0 5px rgba(255,255,255,.2)
 }
-
+-+
     .text-white .h1, .text-white .h2, .text-white .h3, .text-white .h4, .text-white .h5, .text-white .h6, .text-white h1, .text-white h2, .text-white h3, .text-white h4, .text-white h5, .text-white h6 {
         text-shadow: 0 0 1px rgba(255,255,255,.6),0 0 3px rgba(255,255,255,.5),0 0 .5rem rgba(255,255,255,.3),0 0 2rem rgba(255,255,255,.2)
     }

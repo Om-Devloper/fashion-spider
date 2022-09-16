@@ -19,5 +19,9 @@ namespace bulkyBookWeb.Controllers
             IEnumerable<Catagory> objCatagoryList = _db.Catagories;
             return View(objCatagoryList); 
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
