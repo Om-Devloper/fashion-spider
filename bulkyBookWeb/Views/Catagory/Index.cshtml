@@ -2,15 +2,16 @@
 @{
     ViewData["Title"] = "Index";
 }
+
 <div class="col-12 row mt-5">
     <div class="col-7">
-    <h1>Index Category</h1>
-</div>
-<div class="col-5">
-    <button class="btn btn-primary"style="border-radius: 15px"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" asp-controller="Catagory" asp-action="Create">
-       +  Create New Category
-    </button>
-</div>
+        <h1>Index Category</h1>
+    </div>
+    <div class="col-5">
+        <button class="btn btn-primary" style="border-radius: 15px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+        <a asp-controller="Catagory" asp-action="Create" style="text-decoration: none; color: #ffffff " >+ Create New Category</a>
+        </button>
+    </div>
 </div>
 
 

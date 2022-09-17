@@ -4473,7 +4473,7 @@ textarea.form-control-lg {
     --bs-card-border-width: 2px;
     --bs-card-border-color: var(--bs-border-color-translucent);
     --bs-card-border-radius: 0.15rem;
-    --bs-card-box-shadow:;
+    
     --bs-card-inner-border-radius: calc(0.15rem - 2px);
     --bs-card-cap-padding-y: 0.5rem;
     --bs-card-cap-padding-x: 1rem;
@@ -4522,10 +4522,10 @@ textarea.form-control-lg {
             border-top: 0
         }
 
+
 .card-body {
-    flex: 1 1 auto;
-    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-    color: var(--bs-card-color)
+    color: var(--bs-card-color);
+    padding: 1rem 1rem;
 }
 
 .card-title {
@@ -12265,7 +12265,8 @@ body {
 .text-white {
     text-shadow: 0 0 1px rgba(255,255,255,.3),0 0 2px rgba(255,255,255,.3),0 0 5px rgba(255,255,255,.2)
 }
--+
+
+    - +
     .text-white .h1, .text-white .h2, .text-white .h3, .text-white .h4, .text-white .h5, .text-white .h6, .text-white h1, .text-white h2, .text-white h3, .text-white h4, .text-white h5, .text-white h6 {
         text-shadow: 0 0 1px rgba(255,255,255,.6),0 0 3px rgba(255,255,255,.5),0 0 .5rem rgba(255,255,255,.3),0 0 2rem rgba(255,255,255,.2)
     }
