@@ -34,5 +34,36 @@ namespace bulkyBookWeb.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //Get
+        public IActionResult Edit(int ? id)
+        {
+            return View(_db.Catagories.Find(id));
+        }
+        //Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public IActionResult Edit(Catagory obj)
+        {
+            _db.Catagories.Update(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        //Get
+        public IActionResult Delete(int? id)
+        {
+            return View(_db.Catagories.Find(id));
+        }
+        //Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public IActionResult Delete(Catagory obj)
+        {
+            _db.Catagories.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

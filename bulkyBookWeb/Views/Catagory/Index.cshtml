@@ -4,12 +4,12 @@
 }
 
 <div class="col-12 row mt-5">
-    <div class="col-7">
+    <div class="col-9">
         <h1>Index Category</h1>
     </div>
-    <div class="col-5">
+    <div class="col-3">
         <button class="btn btn-primary" style="border-radius: 15px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        <a asp-controller="Catagory" asp-action="Create" style="text-decoration: none; color: #ffffff " >+ Create New Category</a>
+            <a asp-controller="Catagory" asp-action="Create" style="text-decoration: none; color: #ffffff "><i class="bi bi-plus-circle"></i>&nbsp;&nbsp;&nbsp;Create New Category</a>
         </button>
     </div>
 </div>
@@ -30,13 +30,25 @@
         @foreach (var obj in Model)
         {
             <tr>
-                <td class="col-7">
+                <td class="col-6">
                     @obj.Name
                 </td>
                 <td class="col-5">
                     @obj.DisplayOrder
                 </td>
+                <td>
+                    <button class="btn btn-success" style="border-radius: 15px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        <a asp-controller="Catagory" asp-action="Edit" asp-route-id="@obj.Id" style="text-decoration: none; color: #ffffff ">
+                            <i class="bi bi-pencil-square">&nbsp;&nbsp;&nbsp;edit</i>
+                        </a>
+                    </button>
+                    
+                </td>
             </tr>
+
+
+
+
         }
     </tbody>
 </table>

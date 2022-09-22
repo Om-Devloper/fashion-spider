@@ -7,15 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\NewFolder\**" />
-    <Content Remove="Views\NewFolder\**" />
-    <EmbeddedResource Remove="Views\NewFolder\**" />
-    <None Remove="Views\NewFolder\**" />
+	<Compile Remove="Views\NewFolder\**" />
+	<Content Remove="Views\NewFolder\**" />
+	<EmbeddedResource Remove="Views\NewFolder\**" />
+	<None Remove="Views\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\CategoryControllers.cs" />
-    <Compile Remove="Controllers\HomeController1.cs" />
+	<Compile Remove="Controllers\CategoryControllers.cs" />
+	<Compile Remove="Controllers\HomeController1.cs" />
   </ItemGroup>
 
   <ItemGroup>

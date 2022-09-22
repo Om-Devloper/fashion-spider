@@ -1,0 +1,28 @@
+﻿@model Catagory
+<form method="post">
+    <div class="card border-success mb-3 row" style="max-width: 100%;min-height: 600px">
+        <div class="p-4 m-1 pt-3 pb-3">
+            <h2 class="card-header">Create New Category</h2>
+        </div>
+        <div class="form-group p-5 pt-2">
+            <label class="form-label mt-4" asp-for="Name">Name</label>
+            <input type="text" class="form-control" asp-for="Name" placeholder="Enter Name">
+            <small id="emailHelp" class="form-text text-muted">Your Name Will Displayed Soon</small>
+
+        </div>
+        <div class="form-group p-5 pt-0">
+            <label class="form-label mt-4" asp-for="DisplayOrder">Display Order</label>
+            <input type="text" class="form-control" asp-for="DisplayOrder" placeholder="Display Order">
+        </div>
+        <div class="text-center m-1">
+            <button class="btn btn-primary col-2 " style="border-radius: 15px" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                Submit
+            </button>
+        </div>
+        <div class="text-center m-1">
+            <button class="btn col-2 " style="border-radius: 15px" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                <a class="nav-link" asp-area="" asp-controller="Catagory" asp-action="Index">Back To Category</a>
+            </button>
+        </div>
+    </div>
+</form>
