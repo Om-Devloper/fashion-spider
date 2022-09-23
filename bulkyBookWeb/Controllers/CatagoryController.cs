@@ -51,15 +51,7 @@ namespace bulkyBookWeb.Controllers
             return RedirectToAction("Index");
         }
         //Get
-        public IActionResult Delete(int? id)
-        {
-            return View(_db.Catagories.Find(id));
-        }
-        //Post
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public IActionResult Delete(Catagory obj)
+        public IActionResult Delete(int? id, Catagory obj)
         {
             _db.Catagories.Remove(obj);
             _db.SaveChanges();
