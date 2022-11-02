@@ -1,28 +1,58 @@
 ﻿@model Catagory
+<link rel="stylesheet" href="~/css/StyleSheet.css"/>
 <form method="post">
-    <div class="card border-success mb-3 row" style="max-width: 100%;min-height: 600px">
-        <div class="p-4 m-1 pt-3 pb-3">
-            <h2 class="card-header">Create New Category</h2>
-        </div>
-        <div class="form-group p-5 pt-2">
-            <label class="form-label mt-4" asp-for="Name">Name</label>
-            <input type="text" class="form-control" asp-for="Name" placeholder="Enter Name">
-            <small id="emailHelp" class="form-text text-muted">Your Name Will Displayed Soon</small>
+	<style id="cavani_fn_inline-inline-css" type="text/css">
+		.cursor-inner.cursor-slider.cursor-hover span:after,
+		.cursor-inner.cursor-slider.cursor-hover span:before{
+			background-color: #fff;
+		}
+		.cursor-outer .fn-cursor,.cursor-inner.cursor-slider:not(.cursor-hover) .fn-cursor{
+			border-color: #fff;
+		}
+		.cursor-inner .fn-cursor,.cursor-inner .fn-left:before,.cursor-inner .fn-left:after,.cursor-inner .fn-right:before,.cursor-inner .fn-right:after{
+			background-color: #fff
+		}
+		.cursor-inner.cursor-hover .fn-cursor{
+			background-color: rgba(0,0,0,0.1);
+		}
+	
+</style>
+<script type="text/javascript" src="~/js/jquery.min.js" id="jquery-core-js"></script>
 
-        </div>
-        <div class="form-group p-5 pt-0">
-            <label class="form-label mt-4" asp-for="DisplayOrder">Display Order</label>
-            <input type="text" class="form-control" asp-for="DisplayOrder" placeholder="Display Order">
-        </div>
-        <div class="text-center m-1">
-            <button class="btn btn-primary col-2 " style="border-radius: 15px" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                Submit
-            </button>
-        </div>
-        <div class="text-center m-1">
-            <button class="btn col-2 " style="border-radius: 15px" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                <a class="nav-link" asp-area="" asp-controller="Catagory" asp-action="Index">Back To Category</a>
-            </button>
-        </div>
-    </div>
+<div class="marketify-cursor cursor-outer" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"></span></div>
+<div class="marketify-cursor cursor-inner" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"><span class="fn-left"></span><span class="fn-right"></span></span></div>
+
+</div>
+<script type="text/javascript" id="cavani-fn-init-js-extra">
+/* <![CDATA[ */
+var CavaniAjaxObject = {"ajax_url":"https:\/\/marketifythemes.net\/wp\/cavani\/02\/wp-admin\/admin-ajax.php","siteurl":"https:\/\/marketifythemes.net\/wp\/cavani\/02","nonce":"ac6a6f5b3a"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="~/js/init.js" id="cavani-fn-init-js"></script>
+
+	<div class="card border-success mb-3 row" style="max-width: 100%;min-height: 600px">
+		<div class="p-4 m-1 pt-3 pb-3">
+			<h2 class="card-header">Create New Category</h2>
+		</div>
+		<div class="form-group p-5 pt-2">
+			<label class="form-label mt-4" asp-for="Name">Name</label>
+			<input type="text" class="form-control" asp-for="Name" placeholder="Enter Name">
+			<small id="emailHelp" class="form-text text-muted">Your Name Will Displayed Soon</small>
+
+		</div>
+		<div class="form-group p-5 pt-0">
+			<label class="form-label mt-4" asp-for="DisplayOrder">Display Order</label>
+			<input type="text" class="form-control" asp-for="DisplayOrder" placeholder="Display Order">
+		</div>
+		<div class="text-center m-1">
+			<button class="btn btn-primary col-2 " style="border-radius: 15px" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+				Submit
+			</button>
+		</div>
+		<div class="text-center m-1">
+			<button class="btn col-2 " style="border-radius: 15px" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+				<a class="nav-link" asp-area="" asp-controller="Catagory" asp-action="Index">Back To Category</a>
+			</button>
+		</div>
+	</div>
 </form>

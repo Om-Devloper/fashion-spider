@@ -1,6 +1,8 @@
 ﻿using bulkyBookWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace bulkyBookWeb.Controllers
 {
@@ -22,11 +24,20 @@ namespace bulkyBookWeb.Controllers
         {
             return View();
         }
+        public IActionResult tommyhilfiger() 
+        {
+            scrapper();
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public static void scrapper()
+        {
+            tommyHilfiger.tommyhilfiger_Data_Process(0,1);
         }
     }
 }
