@@ -1,8 +1,251 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<style id="cavani_fn_inline-inline-css" type="text/css">
+		.cursor-inner.cursor-slider.cursor-hover span:after,
+		.cursor-inner.cursor-slider.cursor-hover span:before{
+			background-color: #000000;
+		}
+		.cursor-outer .fn-cursor,.cursor-inner.cursor-slider:not(.cursor-hover) .fn-cursor{
+			border-color: rgba(0,0,0,0.5);
+		}
+		.cursor-inner .fn-cursor,.cursor-inner .fn-left:before,.cursor-inner .fn-left:after,.cursor-inner .fn-right:before,.cursor-inner .fn-right:after{
+			background-color: rgba(0,0,0,0.5);
+		}
+		.cursor-inner.cursor-hover .fn-cursor{
+			background-color: rgba(0,0,0,0.1);
+		}
+		.marketify-cursor{
+	position: fixed;
+	left: 0;
+	top: 0;
+	pointer-events: none;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	visibility: hidden;
+}
+.marketify-cursor.mouse-down .fn-cursor{
+	transform: scale(.9);
+}
+
+.cursor-link{
+	width: 30px;
+	height: 30px;
+	margin-left: -15px;
+	margin-top: -15px;
+	border: 2px solid rgba(0,0,0,.5);
+	z-index: 10000000;
+	-webkit-transition: all .08s ease-out;
+	transition: all .08s ease-out;
+}
+.cursor-outer{
+	z-index: 10000000;
+	-webkit-transition: transform .08s ease-out, opacity 1s ease;
+	transition: transform .08s ease-out, opacity 1s ease;
+}
+.cursor-outer .fn-cursor{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -15px 0 0 -15px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 2px solid rgba(0,0,0,.5);
+}
+.cursor-inner .fn-cursor{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -3px 0 0 -3px;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: rgba(0,0,0,.5);
+	-webkit-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+}
+.cursor-outer.cursor-slider,
+.cursor-outer.cursor-hover{
+	opacity: 0;
+	-webkit-transition: transform .08s ease-out, opacity .2s ease;
+	transition: transform .08s ease-out, opacity .2s ease;
+}
+.cursor-inner{
+	z-index: 10000001;
+}
+.cursor-inner.cursor-hover .fn-cursor{
+	margin: -40px 0 0 -40px;
+	width: 80px;
+	height: 80px;
+	background-color: rgba(0,0,0,.1);
+}
+.cursor-inner.cursor-slider:not(.cursor-hover) .fn-cursor{
+	margin-left: -30px;
+	margin-top: -30px;
+	width: 60px;
+	height: 60px;
+	background-color: transparent;
+	border: 5px solid rgba(0,0,0,.5);
+}
+.cursor-inner.cursor-slider.cursor-hover span:after,
+.cursor-inner.cursor-slider.cursor-hover span:before{
+	background-color: #fff;
+}
+.cursor-inner.cursor-slider .fn-left,
+.cursor-inner.cursor-slider .fn-right{
+	opacity: 1;
+	visibility: visible;
+}
+.cursor-inner.cursor-slider .fn-left:after{left: -26px;}
+.cursor-inner.cursor-slider .fn-left:before{left: -26px;}
+.cursor-inner.cursor-slider .fn-left:after{right: -26px;}
+.cursor-inner.cursor-slider .fn-left:before{right: -26px;}
+
+.cursor-inner .fn-left,
+.cursor-inner .fn-right{
+	opacity: 0;
+	visibility: hidden;
+	transition: all .3s ease;
+}
+.cursor-inner .fn-left:after{
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 12px;
+	transform: rotate(50deg);
+	left: -20px;
+	top: 50%;
+	margin-top: -10px;
+	background-color: rgba(0,0,0,.5);
+	transition: all .3s ease;
+}
+.cursor-inner .fn-left:before{
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 12px;
+	transform: rotate(130deg);
+	left: -20px;
+	top: 50%;
+	margin-top: -2px;
+	background-color: rgba(0,0,0,.5);
+	transition: all .3s ease;
+}
+.cursor-inner .fn-right:after{
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 12px;
+	transform: rotate(50deg);
+	right: -20px;
+	top: 50%;
+	margin-top: -2px;
+	background-color: rgba(0,0,0,.5);
+	transition: all .3s ease;
+}
+.cursor-inner .fn-right:before{
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 12px;
+	transform: rotate(130deg);
+	right: -20px;
+	top: 50%;
+	margin-top: -10px;
+	background-color: rgba(0,0,0,.5);
+	transition: all .3s ease;
+}
+/*------------------------------------------------------------------*/
+/*	16) Footer
+/*------------------------------------------------------------------*/
+.cavani_fn_footer{
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 70px;
+	background-color: #fff;
+	z-index: 10;
+	line-height: 70px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px 70px;
+}
+.cavani_fn_footer p{
+	margin: 0;
+	padding: 0;
+	color: #333;
+	font-family: var(--hff);
+}
+.cavani_fn_footer .copyright img{
+	max-height: 40px;
+}
+/* Social List (footer) */
+.cavani_fn_social_list ul{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	margin: 0;
+	padding: 0;
+	-webkit-flex-direction: row;
+	-moz-flex-direction: row;
+	-ms-flex-direction: row;
+	-o-flex-direction: row;
+	flex-direction: row;
+	list-style-type: none;
+	flex-wrap: wrap;
+	margin-left: -20px;
+	-ms-align-items: center;
+	align-items: center;
+}
+.cavani_fn_social_list li{
+	margin: 0;
+	padding: 0;
+	padding-left: 20px;
+}
+.cavani_fn_social_list a{
+	font-size: 15px;
+	display: block;
+	color: #333;
+	position: relative;
+}
+.cavani_fn_social_list i:before{
+	margin: 0;
+	padding: 0;
+}
+.cavani_fn_social_list a:after{
+	width: 30px;
+	height: 30px;
+	content: '';
+	position: absolute;
+	display: block;
+	top: 50%;
+	left: 50%;
+	margin: -15px 0 0 -15px;
+}
+
+	
+</style>
+<script type="text/javascript" src="./Cavani – Just another WordPress site_files/jquery.min.js.download" id="jquery-core-js"></script>
+<div class="marketify-cursor cursor-outer" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"></span></div>
+<div class="marketify-cursor cursor-inner" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"><span class="fn-left"></span><span class="fn-right"></span></span></div>
+
 </div>
+<script type="text/javascript" id="cavani-fn-init-js-extra">
+/* <![CDATA[ */
+var CavaniAjaxObject = {"ajax_url":"https:\/\/marketifythemes.net\/wp\/cavani\/02\/wp-admin\/admin-ajax.php","siteurl":"https:\/\/marketifythemes.net\/wp\/cavani\/02","nonce":"ac6a6f5b3a"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cavani – Just another WordPress site_files/init.js.download" id="cavani-fn-init-js"></script>
+
