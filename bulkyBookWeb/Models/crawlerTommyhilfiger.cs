@@ -24,13 +24,23 @@ namespace bulkyBookWeb.Models
             m_driver.Url = "https://tommyhilfiger.nnnow.com/th-aw22?gender=Men";
             try
             {
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < 30; i++)
                 {
                     ((IJavaScriptExecutor)m_driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(10000);
+                    Console.WriteLine(i);
                 }
-                var Doc = m_driver.PageSource;
-                HtmlDocument.LoadHtml(Doc);
+                var pageSource = m_driver.PageSource;
+                HtmlDocument doc = new HtmlDocument();
+                doc.LoadHtml(pageSource);
+                var xpath = doc.DocumentNode.SelectNodes("//a[@class='nw-productview nwc-anchortag']");
+                foreach (var item in xpath)
+                {
+                    var img = item.SelectNodes("div//img[@class='nwc-lazyimg is-loaded']").LastOrDefault().Attributes["src"].Value;
+                    var productDetails = item.SelectNodes("div//img[@class='nwc-lazyimg is-loaded']").LastOrDefault().Attributes["alt"].Value;
+                    var price = item.SelectNodes("div//div[@class= 'nw-priceblock-container']").FirstOrDefault().InnerText.Trim();
+                }
+
             }
             catch (Exception e)
             {
