@@ -16,6 +16,8 @@ namespace bulkyBookWeb.Models
     {
         public static void tommyhilfiger_Data_Process(int TotalData, int UrlId)
         {
+            var newData = new List<AllData_Fields>();
+            AllData_Fields fields = new AllData_Fields();
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
             service.HideCommandPromptWindow = true;
             var chromeOptions = new ChromeOptions();
@@ -31,16 +33,20 @@ namespace bulkyBookWeb.Models
                     Console.WriteLine(i);
                 }
                 var pageSource = m_driver.PageSource;
-                HtmlDocument doc = new HtmlDocument();
-                doc.LoadHtml(pageSource);
-                var xpath = doc.DocumentNode.SelectNodes("//a[@class='nw-productview nwc-anchortag']");
+                HtmlAgilityPack.HtmlDocument Doc = new HtmlAgilityPack.HtmlDocument();
+                Doc.LoadHtml(pageSource);
+                var xpath = Doc.DocumentNode.SelectNodes("//a[@class='nw-productview nwc-anchortag']");
                 foreach (var item in xpath)
                 {
-                    var img = item.SelectNodes("div//img[@class='nwc-lazyimg is-loaded']").LastOrDefault().Attributes["src"].Value;
-                    var productDetails = item.SelectNodes("div//img[@class='nwc-lazyimg is-loaded']").LastOrDefault().Attributes["alt"].Value;
-                    var price = item.SelectNodes("div//div[@class= 'nw-priceblock-container']").FirstOrDefault().InnerText.Trim();
-                }
+                    fields.imageUrl = item.SelectNodes("div//img[@class='nwc-lazyimg is-loaded']").LastOrDefault().Attributes["src"].Value;
+                    fields.productDetail = item.SelectNodes("div//img[@class='nwc-lazyimg is-loaded']").LastOrDefault().Attributes["alt"].Value;
+                    fields.productValue = item.SelectNodes("div//div[@class= 'nw-priceblock-container']").FirstOrDefault().InnerText.Trim();
+                    fields.productUrl = $"https://tommyhilfiger.nnnow.com{item.Attributes["href"].Value}";
+                    fields.SystemId = item.Attributes["href"].Value.TrimEnd().Split(" ").LastOrDefault();
+                    fields.companyName = "Tommy Hilfiger";
 
+
+                }
             }
             catch (Exception e)
             {
