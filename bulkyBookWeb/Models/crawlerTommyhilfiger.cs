@@ -43,7 +43,7 @@ namespace bulkyBookWeb.Models
                     fields.productValue = item.SelectNodes("div//div[@class= 'nw-priceblock-container']").FirstOrDefault().InnerText.Trim();
                     fields.productUrl = $"https://tommyhilfiger.nnnow.com{item.Attributes["href"].Value}";
                     fields.SystemId = item.Attributes["href"].Value.TrimEnd().Split(" ").LastOrDefault();
-                    fields.companyName = "Tommy Hilfiger";
+                    newData.Add(new AllData_Fields { RefId = UrlId, imageUrl = fields.imageUrl, productDetail = fields.productDetail, productValue = fields.productValue, productUrl = fields.productUrl, SystemId = fields.SystemId, companyName= "Tommy Hilfiger" });
 
 
                 }
