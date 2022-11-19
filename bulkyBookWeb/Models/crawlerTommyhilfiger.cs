@@ -20,7 +20,7 @@ namespace bulkyBookWeb.Models
         {
             string connetionString;
             SqlConnection cnn;
-            connetionString = @"Data Source=LAPTOP-3RGNJ53I\SQLEXPRESS;Database=productDataTable;Trusted_Connection = True;";
+            connetionString = @"Data Source=LAPTOP-3RGNJ53I\SQLEXPRESS;Database= Bulky;Trusted_Connection = True;";
             cnn = new SqlConnection(connetionString);
             cnn.Open();
             var newData = new List<AllData_Fields>();
@@ -87,7 +87,7 @@ namespace bulkyBookWeb.Models
                     }
                     SqlCommand command;
                     SqlDataAdapter adapter = new SqlDataAdapter();
-                    String sql = ($"insert into Data (RefId,SystemId,productDetail,productUrl,companyName,productValue,imageUrl) values('{UrlId}','{fields.SystemId}','{fields.productDetail}','{fields.productUrl}','{fields.companyName}','{fields.productValue}','{fields.imageUrl}')");
+                    String sql = ($"insert into productDataTable (RefId,SystemId,productDetail,productUrl,companyName,productValue,imageUrl) values('{UrlId}','{fields.SystemId}','{fields.productDetail}','{fields.productUrl}','{"Tommy Hilfiger"}','{fields.productValue}','{fields.imageUrl}')");
 
                     command = new SqlCommand(sql, cnn);
 
