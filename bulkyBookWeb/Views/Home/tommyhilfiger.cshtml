@@ -1,3 +1,89 @@
-﻿@model Views_Home_tommyhilfiger
+﻿@using Microsoft.Data.SqlClient
+@model Views_Home_tommyhilfiger
+<link rel="stylesheet" href="~/css/StyleSheet.css" />
+<form method="post">
+    <style id="cavani_fn_inline-inline-css" type="text/css">
+        .cursor-inner.cursor-slider.cursor-hover span:after,
+        .cursor-inner.cursor-slider.cursor-hover span:before {
+            background-color: #fff;
+        }
+
+        .cursor-outer .fn-cursor, .cursor-inner.cursor-slider:not(.cursor-hover) .fn-cursor {
+            border-color: #fff;
+        }
+
+        .cursor-inner .fn-cursor, .cursor-inner .fn-left:before, .cursor-inner .fn-left:after, .cursor-inner .fn-right:before, .cursor-inner .fn-right:after {
+            background-color: #fff
+        }
+
+        .cursor-inner.cursor-hover .fn-cursor {
+            background-color: rgba(0,0,0,0.1);
+        }
+    </style>
+    <script type="text/javascript" src="~/js/jquery.min.js" id="jquery-core-js"></script>
+
+    <div class="marketify-cursor cursor-outer" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"></span></div>
+    <div class="marketify-cursor cursor-inner" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"><span class="fn-left"></span><span class="fn-right"></span></span></div>
+
+    </div>
+    <script type="text/javascript" id="cavani-fn-init-js-extra">
+        /* <![CDATA[ */
+        var CavaniAjaxObject = { "ajax_url": "https:\/\/marketifythemes.net\/wp\/cavani\/02\/wp-admin\/admin-ajax.php", "siteurl": "https:\/\/marketifythemes.net\/wp\/cavani\/02", "nonce": "ac6a6f5b3a" };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="~/js/init.js" id="cavani-fn-init-js"></script>
+    <div class="col-12 row mt-5">
+        <div class="col-9">
+            <h1>Index Category</h1>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-primary" style="border-radius: 15px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                <a asp-controller="Catagory" asp-action="Create" style="text-decoration: none; color: #ffffff "><i class="bi bi-plus-circle"></i>&nbsp;&nbsp;&nbsp;Create New Category</a>
+            </button>
+        </div>
+    </div>
+
+
+    <table class="table table-bordered table-striped"> 
+        <tbody>
+            @{
+                
+            string connetionString;
+            SqlConnection cnn;
+            connetionString = @"Data Source=LAPTOP-3RGNJ53I\SQLEXPRESS;Database= Bulky;Trusted_Connection = True;";
+            cnn = new SqlConnection(connetionString);
+            cnn.Open();
+            var om = ("split om nin ene jfq gg nn mm mm").Split(" ");
+            }
+            @foreach (var item in om)
+            {
+                <tr>
+                    <td class="col-5">
+                    </td>
+                    <td class="col-5">
+                    </td>
+                    <td>
+                        <button class="btn btn-success" style="border-radius: 15px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                            <a asp-controller="Catagory" asp-action="Edit" asp-route-id="" style="text-decoration: none; color: #ffffff ">
+                                <i class="bi bi-pencil-square">&nbsp;&nbsp;&nbsp;edit</i>
+                            </a>
+                        </button>
+                        &nbsp;
+                        <button class="btn btn-danger" style="border-radius: 15px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                            <a asp-controller="Catagory" asp-action="Delete" asp-route-id="" style="text-decoration: none; color: #ffffff ">
+                                <i class="bi bi-trash">&nbsp;&nbsp;&nbsp;Delete</i>
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - bulkyBookWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</form>
 
 

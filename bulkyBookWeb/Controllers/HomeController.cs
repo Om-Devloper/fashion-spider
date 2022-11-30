@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using bulkyBookWeb.Data;
+using Microsoft.Data.SqlClient;
 
 namespace bulkyBookWeb.Controllers
 {
@@ -15,6 +17,13 @@ namespace bulkyBookWeb.Controllers
             _logger = logger;
         }
 
+        //private readonly crawlerDbContext _db;
+
+        //public HomeController(crawlerDbContext db)
+        //{
+        //    _db = db;
+        //}
+
         public IActionResult Index()
         {
             return View();
@@ -26,9 +35,25 @@ namespace bulkyBookWeb.Controllers
         }
         public IActionResult tommyhilfiger() 
         {
-            scrapper();
+            //scrapper();
             return View();
         }
+
+        ////Get
+        //public IActionResult Edit(int? id)
+        //{
+        //    return View(cnn);
+        //}
+        ////Post
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+
+        //public IActionResult Edit(Catagory obj)
+        //{
+        //    _db.Catagories.Update(obj);
+        //    _db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
