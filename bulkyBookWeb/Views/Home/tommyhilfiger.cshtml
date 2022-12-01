@@ -1,4 +1,5 @@
 ﻿@using Microsoft.Data.SqlClient
+@using System.Data
 @model Views_Home_tommyhilfiger
 <link rel="stylesheet" href="~/css/StyleSheet.css" />
 <form method="post">
@@ -29,56 +30,79 @@
     <script type="text/javascript" id="cavani-fn-init-js-extra">
         /* <![CDATA[ */
         var CavaniAjaxObject = { "ajax_url": "https:\/\/marketifythemes.net\/wp\/cavani\/02\/wp-admin\/admin-ajax.php", "siteurl": "https:\/\/marketifythemes.net\/wp\/cavani\/02", "nonce": "ac6a6f5b3a" };
-        /* ]]> */
+                                        /* ]]> */
     </script>
     <script type="text/javascript" src="~/js/init.js" id="cavani-fn-init-js"></script>
-    <div class="col-12 row mt-5">
-        <div class="col-9">
-            <h1>Index Category</h1>
+    <div class="container">
+
+        <div class="col-9 pl-3 col-12 row mt-5">
+            <h1>Product Details</h1>
         </div>
-        <div class="col-3">
-            <button class="btn btn-primary" style="border-radius: 15px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                <a asp-controller="Catagory" asp-action="Create" style="text-decoration: none; color: #ffffff "><i class="bi bi-plus-circle"></i>&nbsp;&nbsp;&nbsp;Create New Category</a>
-            </button>
-        </div>
+
+
+
+        <table class="table table-bordered table-striped">
+            <tbody>
+                @{
+
+                    string connetionString;
+                    SqlConnection cnn;
+                    connetionString = @"Data Source=LAPTOP-3RGNJ53I\SQLEXPRESS;Database= Bulky;Trusted_Connection = True;";
+                    cnn = new SqlConnection(connetionString);
+                    cnn.Open();
+                    DataTable dt = new DataTable();
+                    //productDetail
+                    SqlCommand product = new SqlCommand("SELECT productDetail FROM [productDataTable]", cnn);
+                    SqlDataAdapter daProduct = new SqlDataAdapter(product);
+                    daProduct.Fill(dt);
+                    var printProduct = dt.Rows;
+
+                    //productValue
+                    dt = new DataTable();
+                    SqlCommand value = new SqlCommand("SELECT productValue FROM [productDataTable]", cnn);
+                    SqlDataAdapter daValue = new SqlDataAdapter(value);
+                    daValue.Fill(dt);
+                    var productValue = dt.Rows;
+
+                    //productImageUrl
+                    dt = new DataTable();
+                    SqlCommand imageUrl = new SqlCommand("SELECT imageUrl FROM [productDataTable]", cnn);
+                    SqlDataAdapter daImageUrl = new SqlDataAdapter(imageUrl);
+                    daImageUrl.Fill(dt);
+                    var productImageUrl = dt.Rows;
+
+                    //productUrl
+                    dt = new DataTable();
+                    SqlCommand url = new SqlCommand("SELECT productUrl FROM [productDataTable]", cnn);
+                    SqlDataAdapter daUrl = new SqlDataAdapter(url);
+                    daUrl.Fill(dt);
+                    var productUrl = dt.Rows;
+
+                    int om = dt.Rows.Count;
+
+                }
+                @for (int i = 0; i < om; i++)
+                {
+                    <tr>
+                        <td class="col-4">
+                            @printProduct[i].ItemArray.FirstOrDefault()
+                        </td>
+                        <td class="col-4 p-2">
+                            <img src="@productImageUrl[i].ItemArray.FirstOrDefault()" href="@productUrl[i].ItemArray.FirstOrDefault()">
+                        </td>
+                        <td class="col-2 p-2">
+                            @productValue[i].ItemArray.FirstOrDefault()
+                        </td>
+                        <td class="col-2">
+                            <button class="btn btn-primary" style="border-radius: 15px" type="button">
+                                <a href="@productUrl[i].ItemArray.FirstOrDefault()" style="text-decoration: none; color: #ffffff" target="_blank">Click To Buy</a>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-
-
-    <table class="table table-bordered table-striped"> 
-        <tbody>
-            @{
-                
-            string connetionString;
-            SqlConnection cnn;
-            connetionString = @"Data Source=LAPTOP-3RGNJ53I\SQLEXPRESS;Database= Bulky;Trusted_Connection = True;";
-            cnn = new SqlConnection(connetionString);
-            cnn.Open();
-            var om = ("split om nin ene jfq gg nn mm mm").Split(" ");
-            }
-            @foreach (var item in om)
-            {
-                <tr>
-                    <td class="col-5">
-                    </td>
-                    <td class="col-5">
-                    </td>
-                    <td>
-                        <button class="btn btn-success" style="border-radius: 15px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                            <a asp-controller="Catagory" asp-action="Edit" asp-route-id="" style="text-decoration: none; color: #ffffff ">
-                                <i class="bi bi-pencil-square">&nbsp;&nbsp;&nbsp;edit</i>
-                            </a>
-                        </button>
-                        &nbsp;
-                        <button class="btn btn-danger" style="border-radius: 15px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                            <a asp-controller="Catagory" asp-action="Delete" asp-route-id="" style="text-decoration: none; color: #ffffff ">
-                                <i class="bi bi-trash">&nbsp;&nbsp;&nbsp;Delete</i>
-                            </a>
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - bulkyBookWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

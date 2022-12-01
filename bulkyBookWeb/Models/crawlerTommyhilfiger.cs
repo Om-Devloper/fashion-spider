@@ -5,6 +5,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Net;
@@ -18,11 +19,21 @@ namespace bulkyBookWeb.Models
     {
         public static void tommyhilfiger_Data_Process(int TotalData, int UrlId)
         {
+
+
             string connetionString;
             SqlConnection cnn;
             connetionString = @"Data Source=LAPTOP-3RGNJ53I\SQLEXPRESS;Database= Bulky;Trusted_Connection = True;";
             cnn = new SqlConnection(connetionString);
             cnn.Open();
+
+            DataTable dt = new DataTable();
+            //productValue
+            SqlCommand value = new SqlCommand("SELECT productValue FROM [productDataTable]", cnn);
+            SqlDataAdapter daValue = new SqlDataAdapter(value);
+            daValue.Fill(dt);
+            var productValue = dt.Rows;
+
             var newData = new List<AllData_Fields>();
             AllData_Fields fields = new AllData_Fields();
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
@@ -49,42 +60,15 @@ namespace bulkyBookWeb.Models
                     {
                         fields.imageUrl = Image;
                     }
-                    try
-                    {
-                        fields.productDetail = item.SelectNodes("div//div[@class='nw-productview-producttitle']").FirstOrDefault().InnerText;
 
-                    }
-                    catch (Exception)
-                    {
+                    fields.productDetail = item.SelectNodes("div//div[@class='nw-productview-producttitle']").FirstOrDefault().InnerText;
 
-                    }
-                    try
-                    {
-                        fields.productValue = item.SelectNodes("div//div[@class= 'nw-priceblock-container']").FirstOrDefault().InnerText.Trim();
+                    fields.productValue = item.SelectNodes("div//div[@class= 'nw-priceblock-container']").FirstOrDefault().InnerText.Trim();
 
-                    }
-                    catch (Exception)
-                    {
+                    fields.productUrl = $"https://tommyhilfiger.nnnow.com{item.Attributes["href"].Value}";
 
-                    }
-                    try
-                    {
-                        fields.productUrl = $"https://tommyhilfiger.nnnow.com{item.Attributes["href"].Value}";
+                    fields.SystemId = item.Attributes["href"].Value.TrimEnd().Split("-").LastOrDefault();
 
-                    }
-                    catch (Exception)
-                    {
-
-                    }
-                    try
-                    {
-                        fields.SystemId = item.Attributes["href"].Value.TrimEnd().Split("-").LastOrDefault();
-
-                    }
-                    catch (Exception)
-                    {
-
-                    }
                     SqlCommand command;
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     String sql = ($"insert into productDataTable (RefId,SystemId,productDetail,productUrl,companyName,productValue,imageUrl) values('{UrlId}','{fields.SystemId}','{fields.productDetail}','{fields.productUrl}','{"Tommy Hilfiger"}','{fields.productValue}','{fields.imageUrl}')");
