@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bulkyBookWeb", "bulkyBookWeb\bulkyBookWeb.csproj", "{BB6F0371-0626-4386-890E-87EE81AD609D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionLibrary", "ConnectionLibrary\ConnectionLibrary.csproj", "{252F315C-A7B7-4764-A7AF-AC153748B072}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BB6F0371-0626-4386-890E-87EE81AD609D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB6F0371-0626-4386-890E-87EE81AD609D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB6F0371-0626-4386-890E-87EE81AD609D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{252F315C-A7B7-4764-A7AF-AC153748B072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252F315C-A7B7-4764-A7AF-AC153748B072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252F315C-A7B7-4764-A7AF-AC153748B072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252F315C-A7B7-4764-A7AF-AC153748B072}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -20,8 +20,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<PackageReference Include="Grpc.Core" Version="2.46.5" />
 	<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+	<PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
@@ -30,6 +35,11 @@
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
 	<PackageReference Include="Selenium.WebDriver" Version="4.6.0" />
+	<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConnectionLibrary\ConnectionLibrary.csproj" />
   </ItemGroup>
 
 	<!--<ItemGroup>

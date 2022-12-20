@@ -35,7 +35,7 @@ namespace bulkyBookWeb.Controllers
         }
         public IActionResult tommyhilfiger() 
         {
-            //scrapper();
+            scrapper();
             return View();
         }
 
