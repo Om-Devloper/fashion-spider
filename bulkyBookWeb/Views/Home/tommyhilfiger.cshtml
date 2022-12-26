@@ -1,5 +1,7 @@
 ﻿@using Microsoft.Data.SqlClient
 @using System.Data
+@using bulkyBookWeb.Models.connectWithWeb
+@using ConnectionLibrary
 @model Views_Home_tommyhilfiger
 <link rel="stylesheet" href="~/css/StyleSheet.css" />
 <form method="post">
@@ -25,12 +27,12 @@
 
     <div class="marketify-cursor cursor-outer" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"></span></div>
     <div class="marketify-cursor cursor-inner" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"><span class="fn-left"></span><span class="fn-right"></span></span></div>
-
+    
     </div>
     <script type="text/javascript" id="cavani-fn-init-js-extra">
         /* <![CDATA[ */
         var CavaniAjaxObject = { "ajax_url": "https:\/\/marketifythemes.net\/wp\/cavani\/02\/wp-admin\/admin-ajax.php", "siteurl": "https:\/\/marketifythemes.net\/wp\/cavani\/02", "nonce": "ac6a6f5b3a" };
-                                                                /* ]]> */
+                                                                                        /* ]]> */
     </script>
     <script type="text/javascript" src="~/js/init.js" id="cavani-fn-init-js"></script>
     <div class="container">
@@ -38,15 +40,45 @@
         <div class="col-9 pl-3 col-12 row mt-5">
             <h1>Product Details</h1>
         </div>
-
-
-
         <table class="table table-bordered table-striped">
             <tbody>
-                
                 @{
-                    #region prathamesh
-                    //                public static ConnectionClass Con = new ConnectionClass();
+                    
+        connectionWithWeb Add = new connectionWithWeb(); 
+                  int total = Add.Count();
+
+                }
+                @for (int i = 0; i<total; i++)
+                {
+                    <tr>
+                <td class="col-4">
+                    @Add.productDetail(i)
+                </td>
+                <td class="col-4 p-2">
+                <img src="@Add.imageUrl(i)" href="@Add.productUrl(i)">
+                </td>
+                <td class="col-2 p-2">
+                @Add.productValue(i)
+                </td>
+                <td class="col-2">
+                <button class="btn btn-primary" style="border-radius: 15px" type="button">
+                <a href="@Add.productUrl(i)" style="text-decoration: none; color: #ffffff" target="_blank">Click To Buy</a>
+                </button>
+                </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - bulkyBookWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</form>
+@{
+    #region om
+                    //public static ConnectionClass Con = new ConnectionClass();
                     //var ProductTable = Con.Select("SELECT productDetail FROM [productDataTable]").Rows;
                     //var productValue = Con.Select("SELECT productValue FROM [productDataTable]").Rows;
                     //var imageUrl = Con.Select("SELECT imageUrl FROM [productDataTable]").Rows;
@@ -85,34 +117,6 @@
                     //daUrl.Fill(dt);
                     //var productUrl = dt.Rows;
                     #endregion
-                }
-                @*@for (int i = 0; i < om; i++)
-                {
-                    <tr>
-                        <td class="col-4">
-                            @printProduct[i].ItemArray.FirstOrDefault()
-                        </td>
-                        <td class="col-4 p-2">
-                            <img src="@imageUrl[i].ItemArray.FirstOrDefault()" href="@productUrl[i].ItemArray.FirstOrDefault()">
-                        </td>
-                        <td class="col-2 p-2">
-                            @productValue[i].ItemArray.FirstOrDefault()
-                        </td>
-                        <td class="col-2">
-                            <button class="btn btn-primary" style="border-radius: 15px" type="button">
-                                <a href="@productUrl[i].ItemArray.FirstOrDefault()" style="text-decoration: none; color: #ffffff" target="_blank">Click To Buy</a>
-                            </button>
-                        </td>
-                    </tr>
-                }*@
-            </tbody>
-        </table>
-    </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - bulkyBookWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-</form>
+}
 
 
