@@ -1,8 +1,12 @@
 ﻿@using Microsoft.Data.SqlClient
 @using System.Data
+@using bulkyBookWeb.Controllers
+@{
+    ViewBag.Titel = "productDetail";
+}
 @using bulkyBookWeb.Models.connectWithWeb
 @using ConnectionLibrary
-@model Views_Home_tommyhilfiger
+@model Views_Home_productDetail
 <link rel="stylesheet" href="~/css/StyleSheet.css" />
 <form method="post">
     <style id="cavani_fn_inline-inline-css" type="text/css">
@@ -27,8 +31,6 @@
 
     <div class="marketify-cursor cursor-outer" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"></span></div>
     <div class="marketify-cursor cursor-inner" data-default="yes" data-link="yes" data-slider="no" style="visibility: visible; transform: translate(1422px, 10px);"><span class="fn-cursor"><span class="fn-left"></span><span class="fn-right"></span></span></div>
-    
-    </div>
     <script type="text/javascript" id="cavani-fn-init-js-extra">
         /* <![CDATA[ */
         var CavaniAjaxObject = { "ajax_url": "https:\/\/marketifythemes.net\/wp\/cavani\/02\/wp-admin\/admin-ajax.php", "siteurl": "https:\/\/marketifythemes.net\/wp\/cavani\/02", "nonce": "ac6a6f5b3a" };
@@ -44,26 +46,26 @@
             <tbody>
                 @{
                     
-        connectionWithWeb Add = new connectionWithWeb(); 
-                  int total = Add.Count();
+                  connectionWithWeb Add = new connectionWithWeb(); 
+                  int total = Add.Count(@ViewBag.refId);
 
                 }
                 @for (int i = 0; i<total; i++)
                 {
                     <tr>
                 <td class="col-4">
-                    @Add.productDetail(i)
+                    @Add.productDetail(i,@ViewBag.refId)
                 </td>
                 <td class="col-4 p-2">
-                <img src="@Add.imageUrl(i)" href="@Add.productUrl(i)">
+                <img src="@Add.imageUrl(i,@ViewBag.refId)" href="@Add.productUrl(i,@ViewBag.refId)">
                 </td>
                 <td class="col-2 p-2">
-                @Add.productValue(i)
+                @Add.productValue(i,@ViewBag.refId)
                 </td>
                 <td class="col-2">
-                <button class="btn btn-primary" style="border-radius: 15px" type="button">
-                <a href="@Add.productUrl(i)" style="text-decoration: none; color: #ffffff" target="_blank">Click To Buy</a>
-                </button>
+                
+                <a class="btn btn-primary" href="@Add.productUrl(i,@ViewBag.refId)" style="text-decoration: none; color: #ffffff" target="_blank">Click To Buy</a>
+                
                 </td>
                 </tr>
                 }

@@ -1,8 +1,17 @@
 ﻿@{
 	ViewData["Title"] = "Home Page";
 }
-
-<button type="button" class="btn btn-close-white m-2"><a asp-controller="home" asp-action="tommyhilfiger"><img src="~/LH-Logo.png"/></a></button>
-<div class="col-2"></div>
-<button type="button" class="btn btn-close-white m-2 "><a asp-controller="home" asp-action="tommyhilfiger"><img src="~/logo.jpg" style="width:180px;"/></a></button>
-
+@using (Html.BeginForm("productDetail","Home"))
+{
+	<button type="submit"name="value" value="1" class="btn btn-close-white m-2">
+		<a asp-controller="home" asp-action="productDetail">
+			<img src="~/LH-Logo.png"/>
+		</a>
+	</button>
+	<div class="col-2"></div>
+	<button type="submit" name="value" value="2" class="btn btn-close-white m-2 ">
+		<a asp-controller="home" asp-action="productDetail">
+			<img src="~/logo.jpg" style="width:180px;"/>
+		</a>
+	</button>
+}

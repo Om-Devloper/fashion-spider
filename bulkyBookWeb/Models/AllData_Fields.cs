@@ -2,6 +2,7 @@
 {
     public class AllData_Fields
     {
+        public int Id { get; set; }
         public int RefId { get; set; }
         public string SystemId { get; set; }
         public string productDetail { get; set; }
